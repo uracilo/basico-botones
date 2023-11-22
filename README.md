@@ -27,3 +27,27 @@ Este es un ejemplo simple de un documento HTML que utiliza Bootstrap y JavaScrip
 - Conexión a Internet (para cargar Bootstrap CSS y JS desde CDN).
 - Navegador web compatible con Bootstrap y JavaScript.
 
+
+Ispirated and thanks to [BryanHaley](https://gist.github.com/BryanHaley) for this.
+```javascript
+setInterval(function () {
+    video = document.getElementsByTagName('ytd-playlist-video-renderer')[0];
+
+    video.querySelector('#primary button[aria-label="Action menu"]').click();
+
+    var things = document.evaluate(
+        '//span[contains(text(),"Remove from")]',
+        document,
+        null,
+        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+        null
+    );
+
+    for (var i = 0; i < things.snapshotLength; i++) 
+    {
+        things.snapshotItem(i).click();
+    }
+}, 500);
+```
+
+Non-english users will need to change "Action menu" and "Remove from" to what YouTube uses for their localization.
