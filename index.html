@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Script con Bootstrap</title>
+    <!-- Incluye Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Cambia el color de fondo del botón a verde cuando se hace clic */
+        .btn-clicked {
+            background-color: green !important;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bloque de texto con el script -->
+<pre>
+&lt;script&gt;
+// Obtén una lista de todos los elementos con la clase de botón
+var botones = document.querySelectorAll('.yt-spec-button-shape-next');
+
+// Itera sobre cada botón y simula un clic
+botones.forEach(function(boton) {
+    boton.click();
+});
+&lt;/script&gt;
+</pre>
+
+<!-- Centra horizontal y verticalmente el bloque de botones -->
+<div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+    <div class="row">
+
+        <!-- Genera 100 botones organizados en un grid de 10 columnas -->
+        <script>
+            // Almacena los botones clicados
+            var botonesClicados = [];
+
+            // Función para manejar clic en un botón
+            function handleButtonClick(boton) {
+                // Verifica si el botón ya ha sido clicado
+                if (botonesClicados.includes(boton)) {
+                    console.log('Ya hiciste clic en el botón ' + boton.textContent);
+                } else {
+                    // Si no ha sido clicado, agrega la clase y marca como clicado
+                    boton.classList.add('btn-clicked');
+                    botonesClicados.push(boton);
+                    console.log('Hiciste clic en el botón ' + boton.textContent);
+                }
+            }
+
+            // Genera 100 botones organizados en un grid de 10 columnas
+            for (let i = 1; i <= 100; i++) {
+                document.write(
+                    '<div class="col-1 mb-2">' +
+                        '<yt-button-shape>' +
+                            '<button class="yt-spec-button-shape-next btn btn-primary" aria-label="Botón ' + i + '" onclick="handleButtonClick(this)">' + i + '</button>' +
+                        '</yt-button-shape>' +
+                    '</div>'
+                );
+            }
+        </script>
+
+    </div>
+</div>
+
+<!-- Incluye Bootstrap JS y Popper.js (necesarios para algunos componentes de Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
